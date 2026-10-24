@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Mirrors the original's configuration (same event types, same window-content
+  flags). canRetrieveWindowContent is what makes reel identification possible.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/a11y_description"
+    android:summary="@string/a11y_summary"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeViewScrolled|typeWindowContentChanged|typeWindowsChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:notificationTimeout="500"
+    android:accessibilityFlags="flagRetrieveInteractiveWindows|flagReportViewIds|flagIncludeNotImportantViews|flagDefault"
+    android:canRetrieveWindowContent="true"
+    android:canPerformGestures="true" />

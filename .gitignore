@@ -1,0 +1,17 @@
+# Build outputs
+build/
+app/build/
+.gradle/
+*.apk
+*.aab
+
+# Machine-specific
+local.properties
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store
+
+# Verification screenshots and screen recordings (contain personal device content)
+shots/

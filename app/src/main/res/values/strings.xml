@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ReelMind</string>
+    <string name="a11y_label">ReelMind</string>
+    <string name="a11y_summary">Tap to enable reel counting</string>
+    <string name="a11y_description">ReelMind counts how many reels you scroll in Instagram, YouTube, Snapchat and TikTok. It only looks for the reel viewer on screen and never reads messages, passwords or banking apps. Nothing is uploaded anywhere.</string>
+</resources>
