@@ -230,3 +230,29 @@ For Play Store, upload `app-release.aab` and enrol in Play App Signing. Change
 `applicationId` from `com.brainpal.clone` to your own ID first, and make sure
 you have a licence for Cabinet Grotesk (or swap it for an open font) before
 publishing.
+
+### Version 1.0.0
+
+`versionCode 10000`, `versionName 1.0.0`. Shareable build:
+`app/build/outputs/apk/release/app-release.apk`.
+
+### Play Protect when sharing
+
+Google Play Protect scans every sideloaded APK. An app that asks for an
+accessibility service **and** draws over other apps matches a common malware
+pattern, so Play Protect often shows "unsafe app blocked" / "harmful app" no
+matter where the file came from — WhatsApp, GitHub, Drive or a direct link.
+Hosting it on GitHub does **not** whitelist it; it only avoids messaging apps
+refusing to send `.apk` files.
+
+What actually helps:
+
+- install the release build (done here: not debuggable, stable release key)
+- publish through Google Play (including a closed testing track) so Play signs it
+- on the receiving phone: **More details → Install anyway**, and on Android 13+
+  **App info → ⋮ → Allow restricted settings** before enabling accessibility
+- as a last resort, temporarily disable Play Protect scanning in the Play Store
+
+To publish a GitHub Release: **Releases → Draft a new release → tag `v1.0.0` →
+attach `app-release.apk` → Publish**. The asset URL then works as a normal
+download link.
