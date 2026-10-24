@@ -15,3 +15,7 @@ local.properties
 
 # Verification screenshots and screen recordings (contain personal device content)
 shots/
+
+# Release signing secrets — never commit these
+keystore/
+keystore.properties

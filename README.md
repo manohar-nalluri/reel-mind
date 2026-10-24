@@ -199,3 +199,34 @@ adb logcat -s ReelWatcher      # should print "reel #N (<package>)"
 | `SYSTEM_ALERT_WINDOW` | to draw the block wall |
 
 That's all. No `INTERNET`.
+
+## Release build
+
+The release keystore is **not** in git (`keystore/` and `keystore.properties` are
+ignored). Back both up somewhere safe — losing them means you can never update
+an installed copy.
+
+```sh
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+GRADLE=~/.gradle/wrapper/dists/gradle-8.10.2-all/*/gradle-8.10.2/bin/gradle
+
+"$GRADLE" assembleRelease   # app/build/outputs/apk/release/app-release.apk
+"$GRADLE" bundleRelease     # app/build/outputs/bundle/release/app-release.aab
+```
+
+Verify the signature and that it is not debuggable:
+
+```sh
+APKSIGNER=~/Library/Android/sdk/build-tools/35.0.1/apksigner
+"$APKSIGNER" verify --print-certs app/build/outputs/apk/release/app-release.apk
+```
+
+The release APK is signed with `CN=ReelMind` (4096-bit RSA, v2 + v3 schemes)
+and has no `android:debuggable` flag. It installs over the debug build only
+after uninstalling it, because the signing keys differ — uninstalling wipes the
+local count history.
+
+For Play Store, upload `app-release.aab` and enrol in Play App Signing. Change
+`applicationId` from `com.brainpal.clone` to your own ID first, and make sure
+you have a licence for Cabinet Grotesk (or swap it for an open font) before
+publishing.
